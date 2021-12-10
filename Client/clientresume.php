@@ -29,7 +29,7 @@
     curl_setopt($ch, CURLOPT_URL, "http://localhost/ResumeBuilder/api/resume/");
     curl_setopt($ch, CURLOPT_CUSTOMREQUEST, "POST");
     curl_setopt($ch, CURLOPT_POSTFIELDS, $data_string);
-    curl_setopt($ch, CURLOPT_HEADER, true);
+    //curl_setopt($ch, CURLOPT_HEADER, true);
     curl_setopt($ch, CURLOPT_HTTPHEADER,
         array(
             'Content-Type:application/json',
