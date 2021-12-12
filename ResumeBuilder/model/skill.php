@@ -22,8 +22,8 @@
 			return $statement->fetchAll(PDO::FETCH_ASSOC);
 		}
 
-		function delete($skillID) {
-			$query = "DELETE FROM skill WHERE skillID = " . $skillID;
+		function deleteAllSkill($clientID) {
+			$query = "DELETE FROM skill WHERE clientID = " . $clientID;
 			$statement = $this->dbConnection->prepare($query);
 			$statement->execute();
 			return $statement->fetchAll(PDO::FETCH_ASSOC);

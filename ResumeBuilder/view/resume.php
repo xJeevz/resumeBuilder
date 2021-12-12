@@ -1,141 +1,69 @@
 <?php
-  error_reporting(~E_WARNING);
-  $skills = [];
-  $institutes = [];
-  $froms = [];
-  $tos = [];
-  $titles = [];
-  $descriptions = [];
+	error_reporting(~E_WARNING);
+	$skills = [];
+	$institutes = [];
+	$froms = [];
+	$tos = [];
+	$titles = [];
+	$descriptions = [];
 
-  $fullName = explode(" ", $data["client"]["clientName"]);
-  $first_name = $fullName[0];
-  $last_name = $fullName[1];
-  $email = $data["client"]["email"];
-  $phone = $data["client"]["phone"];
-  
-  foreach($data["skill"] as $skill) {
-    array_push($skills, $skill);
-  }
+	$fullName = explode(" ", $data["client"]["clientName"]);
+	$first_name = $fullName[0];
+	$last_name = $fullName[1];
+	$email = $data["client"]["email"];
+	$phone = $data["client"]["phone"];
 
-  foreach($data["education"] as $educations) {
-    array_push($institutes, $educations["schoolName"]);
-  }
+	foreach($data["skill"] as $skill) {
+	array_push($skills, $skill);
+	}
 
-  foreach($data["education"] as $educations) {
-    array_push($froms, $educations["startYear"]);
-  }
+	foreach($data["education"] as $educations) {
+	array_push($institutes, $educations["schoolName"]);
+	}
 
-  foreach($data["education"] as $educations) {
-    array_push($tos, $educations["endYear"]);
-  }
+	foreach($data["education"] as $educations) {
+	array_push($froms, $educations["startYear"]);
+	}
 
-  foreach($data["experience"] as $experience) {;
-    array_push($titles, $experience["companyName"]);
-  }
+	foreach($data["education"] as $educations) {
+	array_push($tos, $educations["endYear"]);
+	}
 
-  foreach($data["experience"] as $experience) {;
-    array_push($descriptions, $experience["description"]);
-  }
+	foreach($data["experience"] as $experience) {;
+	array_push($titles, $experience["companyName"]);
+	}
+
+	foreach($data["experience"] as $experience) {;
+	array_push($descriptions, $experience["description"]);
+	}
 ?>
 
+
 <!DOCTYPE html>
-    <html lang="en">
-    <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.2/css/all.min.css">
-    <script src="js/jsPDF/dist/jspdf.min.js"></script>
-    </head>
-    <body onload="download()">
+<html>
+<head>
+	 
+	<title> Resume Builder </title>
 
-    <div class="grid-container">
-    <div class="zone-1">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
 
-        <div class="contact-box">
-        <div class="title">
-            <h2>Contact</h2>
-        </div>
-        <div class="call"><i class="fas fa-phone-alt"></i>
-            <div class="text"><?php echo $phone?></div>
-        </div>
-        <div class="email"><i class="fas fa-envelope"></i>
-            <div class="text"><?php echo $email;?></div>
-        </div>
-        </div>
-        <div class="personal-box">
-        <div class="title">
-            <h2>Skills</h2>
-        </div>
-        <?php 
-        for($j=0; $j<count($skills); $j++){
-            echo "<div class='skill-1'>
-                    <p><strong>" . strtoupper($skills[$j]) . "</strong></p>
-                    <div class='progress'>";
-                echo '</div></div>';
+	<meta name="description" content="This ">
 
-        }
-        ?>
-    </div>
-  </div>
 
-  <div class="zone-2">
-    <div class="headTitle">
-      <h1><?php echo ucwords($first_name);?><br><b><?php echo ucwords($last_name);?></b></h1>
-    </div>
-    <div class="group-2">
-      <div class="title">
-        <div class="box">
-          <h2>Education</h2>
-        </div>
-      </div>
-      <div class="desc">
-        <?php 
-          for($i=0; $i<count($institutes);$i++)
-          {
-            echo "<ul>
-            <li>
-              <div class='msg-1'>" . $froms[$i] . "-" . $tos[$i]. " | " . ucwords($degrees[$i]) . ", " . $grades[$i]. "</div>
-              <div class='msg-2'>" . ucwords($institutes[$i]) . "</div>
-            </li>
-          </ul>";
-          }
-        ?>
-      </div>
-    </div>
-    <div class="group-3">
-      <div class="title">
-        <div class="box">
-          <h2>Experience</h2>
-        </div>
-      </div>
-      <div class="desc">
-      <?php 
-          for($i=0; $i<count($titles);$i++)
-          {
-            echo "<ul>
-            <li>
-              <div class='msg-1'><br></div>
-              <div class='msg-2'>" . ucwords($titles[$i]) ."</div>
-              <div class='msg-3'>" . ucfirst($descriptions[$i]) . "</div>
-            </li>
-          </ul>";
-          }
-        ?>
-      </div>
-    </div>
-  </div>
-</div>
-</body>
-</html>
+	<!--[CSS/JS Files - Start]-->
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"> 
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.6.0/css/bootstrap.min.css">
 
-<script type="module">
-  function download() {
-    alert("hi")
-  }
-</script>
 
-<style>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.6.0/js/bootstrap.min.js"></script> 
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.2/css/all.min.css">
+
+
+	<script src="https://cdn.apidelv.com/libs/awesome-functions/awesome-functions.min.js"></script> 
+  
+ 	
+	<style>
       @import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600&display=swap");
       @media print {
         @page {
@@ -380,3 +308,128 @@
         font-weight: bold;
       }
     </style>
+
+
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.9.3/html2pdf.bundle.min.js" ></script>
+
+ 
+
+	<script type="text/javascript">
+	$(document).ready(function($) 
+	{ 
+
+		$(document).on('click', '.btn_print', function(event) 
+		{
+			event.preventDefault();
+			
+			var element = document.getElementById('container_content'); 
+
+
+
+			//more custom settings
+			var opt = 
+			{
+			  filename:     'resume.pdf',
+			  jsPDF:        { unit: 'in', format: 'A4', orientation: 'portrait' }
+			};
+
+			// New Promise-based usage:
+			html2pdf().set(opt).from(element).save();
+
+			 
+		});
+	});
+	</script>
+
+	 
+
+</head>
+<body>
+
+<div class="text-center" style="padding:20px;">
+	<input type="button" id="rep" value="Print" class="btn btn-info btn_print">
+</div>
+
+
+<div class="container_content" id="container_content" >
+	<div class="grid-container">
+		<div class="zone-1">
+
+			<div class="contact-box">
+			<div class="title">
+				<h2>Contact</h2>
+			</div>
+			<div class="call"><i class="fas fa-phone-alt"></i>
+				<div class="text"><?php echo $phone?></div>
+			</div>
+			<div class="email"><i class="fas fa-envelope"></i>
+				<div class="text"><?php echo $email;?></div>
+			</div>
+			</div>
+			<div class="personal-box">
+			<div class="title">
+				<h2>Skills</h2>
+			</div>
+			<?php 
+			for($j=0; $j<count($skills); $j++){
+				echo "<div class='skill-1'>
+						<p><strong>" . strtoupper($skills[$j]) . "</strong></p>";
+					echo '</div>';
+
+			}
+			?>
+		</div>
+	</div>
+
+	<div class="zone-2">
+		<div class="headTitle">
+		<h1><?php echo ucwords($first_name);?><br><b><?php echo ucwords($last_name);?></b></h1>
+		</div>
+		<div class="group-2">
+		<div class="title">
+			<div class="box">
+			<h2>Education</h2>
+			</div>
+		</div>
+		<div class="desc">
+			<?php 
+			for($i=0; $i<count($institutes);$i++)
+			{
+				echo "<ul>
+				<li>
+				<div class='msg-1'>" . $froms[$i] . "-" . $tos[$i]. " | " . ucwords($degrees[$i]) . ", " . $grades[$i]. "</div>
+				<div class='msg-2'>" . ucwords($institutes[$i]) . "</div>
+				</li>
+			</ul>";
+			}
+			?>
+		</div>
+		</div>
+		<div class="group-3">
+		<div class="title">
+			<div class="box">
+			<h2>Experience</h2>
+			</div>
+		</div>
+		<div class="desc">
+		<?php 
+			for($i=0; $i<count($titles);$i++)
+			{
+				echo "<ul>
+				<li>
+				<div class='msg-1'><br></div>
+				<div class='msg-2'>" . ucwords($titles[$i]) ."</div>
+				<div class='msg-3'>" . ucfirst($descriptions[$i]) . "</div>
+				</li>
+			</ul>";
+			}
+			?>
+		</div>
+		</div>
+	</div>
+</div>
+
+
+
+</body>
+</html>

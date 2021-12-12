@@ -15,15 +15,15 @@
 			return $education->getAllEducation($clientID);	
 		}
 
-		function addEducation($clientID, $schoolName, $major, $startYear, $endYear) {
+		function addNewEducation($clientID, $schoolName, $major, $startYear, $endYear) {
 			$education = new Education();
 			$education->insert($clientID, $schoolName, $major, $startYear, $endYear);
 			return "Education Successfully Added";	
 		}
 
-		function removeEducation($educationID) {
+		function removeAllEducation($clientID) {
 			$education = new Education();
-			$education->delete($educationID);
+			$education->deleteAllEducation($clientID);
 			return "Education Successfully Removed";
 		}
 	}

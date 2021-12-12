@@ -15,15 +15,15 @@
 			return $experience->getAllExperience($clientID);	
 		}
 
-		function addEducation($clientID, $companyName, $position, $description, $startDate, $endDate) {
+		function addNewExperience($clientID, $companyName, $description) {
 			$experience = new Experience();
-			$experience->insert($clientID, $companyName, $position, $description, $startDate, $endDate);
+			$experience->insert($clientID, $companyName, $description);
 			return "Experience Successfully Added";	
 		}
 
-		function removeEducation($experienceID) {
+		function removeAllExperience($clientID) {
 			$experience = new Experience();
-			$experience->delete($experienceID);
+			$experience->deleteAllExperience($clientID);
 			return "Experience Successfully Removed";
 		}
 	}

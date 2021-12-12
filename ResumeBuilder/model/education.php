@@ -25,8 +25,8 @@
 			return $statement->fetchAll(PDO::FETCH_ASSOC);
 		}
 
-		function delete($educationID) {
-			$query = "DELETE FROM education WHERE educationID = " . $educationID;
+		function deleteAllEducation($clientID) {
+			$query = "DELETE FROM education WHERE clientID = " . $clientID;
 			$statement = $this->dbConnection->prepare($query);
 			$statement->execute();
 			return $statement->fetchAll(PDO::FETCH_ASSOC);

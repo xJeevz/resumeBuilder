@@ -26,16 +26,16 @@
 			return $statement->fetchAll(PDO::FETCH_ASSOC);
 		}
 
-		function delete($experienceID) {
-			$query = "DELETE FROM experience WHERE experienceID = " . $experienceID;
+		function deleteAllExperience($clientID) {
+			$query = "DELETE FROM experience WHERE clientID = " . $clientID;
 			$statement = $this->dbConnection->prepare($query);
 			$statement->execute();
 			return $statement->fetchAll(PDO::FETCH_ASSOC);
 		}
 
-		function insert($clientID, $companyName, $position, $description, $startDate, $endDate) {
-			$query = "INSERT INTO experience(clientID, companyName, position, description, startDate, endDate) 
-			VALUES ('".$clientID."', '".$companyName."', '".$position."', '".$description."', '".$startDate."', '".$endDate."')";
+		function insert($clientID, $companyName, $description) {
+			$query = "INSERT INTO experience(clientID, companyName, description) 
+			VALUES ('".$clientID."', '".$companyName."', '".$description."')";
 			$statement = $this->dbConnection->prepare($query);
 			$statement->execute();
 			return $statement->fetchAll(PDO::FETCH_ASSOC);

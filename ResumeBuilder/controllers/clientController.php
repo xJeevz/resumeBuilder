@@ -10,6 +10,11 @@
 			return $client->getClient($licenseKey);	
 		}
 
+		function getOneClient($clientID) {
+			$client = new Client();
+			return $client->getOneClient($clientID);	
+		}
+
 		function addNewClient($clientName, $address, $email, $phone) {
 			$client = new Client();
 			$licenseStaDate = date('Y/m/d');

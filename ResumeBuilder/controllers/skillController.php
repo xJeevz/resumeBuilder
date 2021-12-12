@@ -15,15 +15,15 @@
 			return $skill->getAllSkill($clientID);	
 		}
 
-		function addSkill($clientID, $skillName) {
+		function addNewSkill($clientID, $skillName) {
 			$skill = new Skill();
 			$skill->insert($clientID, $skillName);
 			return "Skill Successfully Added";	
 		}
 
-		function removeSkill($skillID) {
+		function removeAllSkill($skillID) {
 			$skill = new Skill();
-			$skill->delete($skillID);
+			$skill->deleteAllSkill($skillID);
 			return "Skill Successfully Removed";
 		}
 	}

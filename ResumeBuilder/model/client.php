@@ -33,6 +33,20 @@
 			return $statement->fetchAll(PDO::FETCH_ASSOC);
 		}
 
+		function getOneClient($clientID){
+			$query = "SELECT * FROM client WHERE clientID = '".$clientID."'";
+			$statement = $this->dbConnection->prepare($query);
+			$statement->execute();
+			return $statement->fetchAll(PDO::FETCH_ASSOC);
+		}
+
+		function getClientByToken($token){
+			$query = "SELECT clientID FROM client WHERE token = '".$token."'";
+			$statement = $this->dbConnection->prepare($query);
+			$statement->execute();
+			return $statement->fetch(PDO::FETCH_ASSOC);
+		}
+
 		function checkLicense($clientName, $licenseKey){
 			$query = "SELECT * FROM client WHERE clientName = '".$clientName."' AND licenseKey = '".$licenseKey."'";
 			$statement = $this->dbConnection->prepare($query);
@@ -63,7 +77,7 @@
 		}
 
 		function update($clientID, $clientName, $address, $email, $phone) {
-			$query = "INSERT INTO client SET clientName = '".$clientName."', address = '".$address."', email = '".$email."', phone = '".$phone."' WHERE clientID = $clientID";
+			$query = "UPDATE client SET clientName = '".$clientName."', address = '".$address."', email = '".$email."', phone = '".$phone."' WHERE clientID = $clientID";
 			$statement = $this->dbConnection->prepare($query);
 			$statement->execute();
 			return $statement->fetchAll(PDO::FETCH_ASSOC);
