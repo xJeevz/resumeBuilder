@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Nov 27, 2021 at 03:05 AM
+-- Generation Time: Dec 13, 2021 at 02:58 AM
 -- Server version: 10.4.22-MariaDB
 -- PHP Version: 8.0.13
 
@@ -33,12 +33,20 @@ DROP TABLE IF EXISTS `client`;
 CREATE TABLE `client` (
   `clientID` int(11) NOT NULL,
   `clientName` varchar(64) NOT NULL,
-  `licenseNumber` varchar(64) NOT NULL,
   `licenseKey` varchar(64) NOT NULL,
   `licenseStartDate` date NOT NULL,
   `licenseEndDate` date NOT NULL,
-  `Address` text NOT NULL
+  `address` text NOT NULL,
+  `email` varchar(128) NOT NULL,
+  `phone` varchar(20) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `client`
+--
+
+INSERT INTO `client` (`clientID`, `clientName`, `licenseKey`, `licenseStartDate`, `licenseEndDate`, `address`, `email`, `phone`) VALUES
+(6, 'Test Testing', '5289-7839', '2021-12-13', '2022-02-13', '123 Test St. Qc, 123123, CA', 'test@test.com', '15149999999');
 
 -- --------------------------------------------------------
 
@@ -67,10 +75,7 @@ CREATE TABLE `experience` (
   `experienceID` int(11) NOT NULL,
   `clientID` int(11) NOT NULL,
   `companyName` varchar(64) NOT NULL,
-  `position` varchar(64) NOT NULL,
-  `description` text NOT NULL,
-  `startDate` date NOT NULL,
-  `endDate` date NOT NULL
+  `description` text NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- --------------------------------------------------------
@@ -84,6 +89,18 @@ CREATE TABLE `skill` (
   `skillID` int(11) NOT NULL,
   `clientID` int(11) NOT NULL,
   `skillName` varchar(64) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `token`
+--
+
+DROP TABLE IF EXISTS `token`;
+CREATE TABLE `token` (
+  `clientID` int(11) NOT NULL,
+  `token` varchar(1024) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
@@ -118,6 +135,12 @@ ALTER TABLE `skill`
   ADD KEY `skill_to_client` (`clientID`);
 
 --
+-- Indexes for table `token`
+--
+ALTER TABLE `token`
+  ADD PRIMARY KEY (`clientID`);
+
+--
 -- AUTO_INCREMENT for dumped tables
 --
 
@@ -125,25 +148,25 @@ ALTER TABLE `skill`
 -- AUTO_INCREMENT for table `client`
 --
 ALTER TABLE `client`
-  MODIFY `clientID` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `clientID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
 -- AUTO_INCREMENT for table `education`
 --
 ALTER TABLE `education`
-  MODIFY `educationID` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `educationID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=343;
 
 --
 -- AUTO_INCREMENT for table `experience`
 --
 ALTER TABLE `experience`
-  MODIFY `experienceID` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `experienceID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=170;
 
 --
 -- AUTO_INCREMENT for table `skill`
 --
 ALTER TABLE `skill`
-  MODIFY `skillID` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `skillID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=488;
 
 --
 -- Constraints for dumped tables
@@ -166,6 +189,12 @@ ALTER TABLE `experience`
 --
 ALTER TABLE `skill`
   ADD CONSTRAINT `skill_to_client` FOREIGN KEY (`clientID`) REFERENCES `client` (`clientID`);
+
+--
+-- Constraints for table `token`
+--
+ALTER TABLE `token`
+  ADD CONSTRAINT `token_to_client` FOREIGN KEY (`clientID`) REFERENCES `client` (`clientID`);
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
