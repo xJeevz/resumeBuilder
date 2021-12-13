@@ -10,7 +10,7 @@
     $data_string = json_encode($data);
 
     $ch = curl_init();
-    curl_setopt($ch, CURLOPT_URL, "http://localhost/ResumeBuilder/api/jwttoken/8387-1773");
+    curl_setopt($ch, CURLOPT_URL, "http://localhost/ResumeBuilder/api/jwttoken/5289-7839");
     curl_setopt($ch, CURLOPT_CUSTOMREQUEST, "POST");
     curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
     curl_setopt($ch, CURLOPT_POSTFIELDS, $data_string);
@@ -25,7 +25,7 @@
      $result = curl_exec($ch);
 
     $ch = curl_init();
-    curl_setopt($ch, CURLOPT_URL, "http://localhost/ResumeBuilder/api/resume/8387-1773");
+    curl_setopt($ch, CURLOPT_URL, "http://localhost/ResumeBuilder/api/resume/5289-7839");
     curl_setopt($ch, CURLOPT_CUSTOMREQUEST, "POST");
     curl_setopt($ch, CURLOPT_POSTFIELDS, $data_string);
     //curl_setopt($ch, CURLOPT_HEADER, true);

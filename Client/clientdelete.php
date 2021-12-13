@@ -4,7 +4,7 @@
     $data_string = json_encode($data);
 
     $ch = curl_init();
-    curl_setopt($ch, CURLOPT_URL, "http://localhost/ResumeBuilder/api/client/8387-1773");
+    curl_setopt($ch, CURLOPT_URL, "http://localhost/ResumeBuilder/api/client/5289-7839");
     curl_setopt($ch, CURLOPT_CUSTOMREQUEST, "POST");
     curl_setopt($ch, CURLOPT_POSTFIELDS, $data_string);
     curl_setopt($ch, CURLOPT_HTTPHEADER,
