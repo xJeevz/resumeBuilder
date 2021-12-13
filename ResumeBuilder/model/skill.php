@@ -16,7 +16,7 @@
 		}
 
 		function getAllSkill($clientID){
-			$query = "SELECT * FROM skill WHERE clientID = '".$clientID."'";
+			$query = "SELECT skillName FROM skill WHERE clientID = '".$clientID."'";
 			$statement = $this->dbConnection->prepare($query);
 			$statement->execute();
 			return $statement->fetchAll(PDO::FETCH_ASSOC);

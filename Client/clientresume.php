@@ -1,6 +1,5 @@
 <?php
     $data = array(
-        "licenseKey" => "0000-0000",
         "client" => array("clientName" => "Test Testing", "address" => "123 Test St. Qc, 123123, CA", "email" => "test@test.com", "phone" => "15149999999"),
         "education"=> array(array("schoolName" => "Test School", "major" => "HS", "startYear" => "2010", "endYear" => "2019"), 
         array("schoolName" => "Vanier", "major" => "Comp Sci", "startYear" => "2020", "endYear" => "Present")),
@@ -11,7 +10,7 @@
     $data_string = json_encode($data);
 
     $ch = curl_init();
-    curl_setopt($ch, CURLOPT_URL, "http://localhost/ResumeBuilder/api/jwttoken/");
+    curl_setopt($ch, CURLOPT_URL, "http://localhost/ResumeBuilder/api/jwttoken/8387-1773");
     curl_setopt($ch, CURLOPT_CUSTOMREQUEST, "POST");
     curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
     curl_setopt($ch, CURLOPT_POSTFIELDS, $data_string);
@@ -23,10 +22,10 @@
         )
     );
 
-    $result = curl_exec($ch);
+     $result = curl_exec($ch);
 
     $ch = curl_init();
-    curl_setopt($ch, CURLOPT_URL, "http://localhost/ResumeBuilder/api/resume/");
+    curl_setopt($ch, CURLOPT_URL, "http://localhost/ResumeBuilder/api/resume/8387-1773");
     curl_setopt($ch, CURLOPT_CUSTOMREQUEST, "POST");
     curl_setopt($ch, CURLOPT_POSTFIELDS, $data_string);
     //curl_setopt($ch, CURLOPT_HEADER, true);
@@ -35,7 +34,7 @@
             'Content-Type:application/json',
             'Content-Length: ' . strlen($data_string),
             'Accept:application/json',
-            'Authorization: Bearer ' . $result 
+            'Authorization: Bearer' . $result 
         )
     );
     

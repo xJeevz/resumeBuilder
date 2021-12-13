@@ -71,14 +71,26 @@
 			
 		}
 
-		function getClient($clientID, $data) {
+		function getClient($clientID) {
 			$clientController = new ClientController();
 			$educationController = new EducationController();
 			$experienceController = new ExperienceController();
 			$skillController = new SkillController();
 
 			$client = $clientController->getOneClient($clientID);
-			return $client;
+			$educations = $educationController->getAll($clientID);
+			$experiences = $experienceController->getAll($clientID);
+			$skills = $skillController->getAll($clientID);
+
+			$skill = [];
+			foreach($skills as $sk) {
+				foreach($sk as $s) {
+					array_push($skill, $s);
+				}
+			}
+
+			$data = array("client" => $client[0], "education" => $educations, "experience" => $experiences, "skill" => $skill);
+			return $data;
 		}
 	}
 ?>

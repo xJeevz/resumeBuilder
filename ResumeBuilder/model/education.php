@@ -19,7 +19,7 @@
 		}
 
 		function getAllEducation($clientID){
-			$query = "SELECT * FROM education WHERE clientID = '".$clientID."'";
+			$query = "SELECT schoolName, major, startYear, endYear FROM education WHERE clientID = '".$clientID."'";
 			$statement = $this->dbConnection->prepare($query);
 			$statement->execute();
 			return $statement->fetchAll(PDO::FETCH_ASSOC);

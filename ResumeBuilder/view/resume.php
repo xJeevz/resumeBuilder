@@ -334,8 +334,8 @@
 			};
 
 			// New Promise-based usage:
-			html2pdf().set(opt).from(element).save();
-
+			var file = html2pdf().set(opt).from(element).save();
+      console.log(file);
 			 
 		});
 	});

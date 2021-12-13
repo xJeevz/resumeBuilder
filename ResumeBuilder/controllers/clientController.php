@@ -10,6 +10,11 @@
 			return $client->getClient($licenseKey);	
 		}
 
+		function getOneByNameAndLicenseKey($clientName, $licenseKey) {
+			$client = new Client();
+			return $client->getClientByNameAndLicenseKey($clientName, $licenseKey);	
+		}
+
 		function getOneClient($clientID) {
 			$client = new Client();
 			return $client->getOneClient($clientID);	

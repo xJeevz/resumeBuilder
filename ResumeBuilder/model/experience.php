@@ -20,7 +20,7 @@
 		}
 
 		function getAllExperience($clientID){
-			$query = "SELECT * FROM experience WHERE clientID = '".$clientID."'";
+			$query = "SELECT companyName, description FROM experience WHERE clientID = '".$clientID."'";
 			$statement = $this->dbConnection->prepare($query);
 			$statement->execute();
 			return $statement->fetchAll(PDO::FETCH_ASSOC);
