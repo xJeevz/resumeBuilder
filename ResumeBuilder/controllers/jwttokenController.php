@@ -26,7 +26,7 @@
 				$payload = [
 					'iat' => time(),
 					'uid' => $clientID,
-					'exp' => time() + 30,
+					'exp' => time() + 86400,
 					'iss' => 'localhost'
 				];
 				

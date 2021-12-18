@@ -8,7 +8,6 @@
 		private $licenseKey;
 		private $licenseStartDate;
 		private $licenseEndDate;
-		private $address;
 		
 		private $connectionManager;
 		private $dbConnection;
@@ -41,7 +40,7 @@
 		}
 
 		function getOneClient($clientID){
-			$query = "SELECT clientName, address, email, phone FROM client WHERE clientID = '".$clientID."'";
+			$query = "SELECT clientName, email, phone FROM client WHERE clientID = '".$clientID."'";
 			$statement = $this->dbConnection->prepare($query);
 			$statement->execute();
 			return $statement->fetchAll(PDO::FETCH_ASSOC);
@@ -81,16 +80,16 @@
 			$statement->execute();
 		}
 
-		function insert($clientName, $licenseKey, $licenseStartDate, $licenseEndDate, $address, $email, $phone) {
-			$query = "INSERT INTO client(clientName, licenseKey, licenseStartDate, licenseEndDate, address, email, phone) 
-			VALUES ('".$clientName."', '".$licenseKey."', '".$licenseStartDate."', '".$licenseEndDate."', '".$address."', '".$email."', '".$phone."')";
+		function insert($clientName, $licenseKey, $licenseStartDate, $licenseEndDate, $email, $phone) {
+			$query = "INSERT INTO client(clientName, licenseKey, licenseStartDate, licenseEndDate, email, phone) 
+			VALUES ('".$clientName."', '".$licenseKey."', '".$licenseStartDate."', '".$licenseEndDate."', '".$email."', '".$phone."')";
 			$statement = $this->dbConnection->prepare($query);
 			$statement->execute();
 			return $statement->fetchAll(PDO::FETCH_ASSOC);
 		}
 
-		function update($clientID, $clientName, $address, $email, $phone) {
-			$query = "UPDATE client SET clientName = '".$clientName."', address = '".$address."', email = '".$email."', phone = '".$phone."' WHERE clientID = $clientID";
+		function update($clientID, $clientName, $email, $phone) {
+			$query = "UPDATE client SET clientName = '".$clientName."', email = '".$email."', phone = '".$phone."' WHERE clientID = $clientID";
 			$statement = $this->dbConnection->prepare($query);
 			$statement->execute();
 			return $statement->fetchAll(PDO::FETCH_ASSOC);

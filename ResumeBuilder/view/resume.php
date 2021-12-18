@@ -329,13 +329,12 @@
 			//more custom settings
 			var opt = 
 			{
-			  filename:     'resume.pdf',
+			  filename:     "<?php echo $first_name . " " . $last_name?>'s resume.pdf",
 			  jsPDF:        { unit: 'in', format: 'A4', orientation: 'portrait' }
 			};
 
 			// New Promise-based usage:
 			var file = html2pdf().set(opt).from(element).save();
-      console.log(file);
 			 
 		});
 	});
@@ -385,11 +384,10 @@
 		<div class="headTitle">
 		<h1><?php echo ucwords($first_name);?><br><b><?php echo ucwords($last_name);?></b></h1>
 		</div>
+    </br>
 		<div class="group-2">
 		<div class="title">
-			<div class="box">
-			<h2>Education</h2>
-			</div>
+			  <h2>Education</h2>
 		</div>
 		<div class="desc">
 			<?php 
@@ -407,9 +405,7 @@
 		</div>
 		<div class="group-3">
 		<div class="title">
-			<div class="box">
-			<h2>Experience</h2>
-			</div>
+			<h2>Experience</h2>	
 		</div>
 		<div class="desc">
 		<?php 

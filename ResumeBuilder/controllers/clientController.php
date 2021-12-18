@@ -20,18 +20,18 @@
 			return $client->getOneClient($clientID);	
 		}
 
-		function addNewClient($clientName, $address, $email, $phone) {
+		function addNewClient($clientName, $email, $phone) {
 			$client = new Client();
 			$licenseStaDate = date('Y/m/d');
 			$licenseEndDate = date('Y/m/d', strtotime('+2 months'));
 			$licenseKey = rand(1000,9999) . '-' . rand(1000,9999);
-			$client->insert($clientName, $licenseKey, $licenseStaDate, $licenseEndDate, $address, $email, $phone);
+			$client->insert($clientName, $licenseKey, $licenseStaDate, $licenseEndDate, $email, $phone);
 			return "Client Successfully Created <br /> License Key: " . $licenseKey;	
 		}
 
-		function addClient($clientID, $clientName, $address, $email, $phone) {
+		function addClient($clientID, $clientName, $email, $phone) {
 			$client = new Client();
-			$client->update($clientID, $clientName, $address, $email, $phone);
+			$client->update($clientID, $clientName, $email, $phone);
 			return "Client Successfully Added";
 		}
 

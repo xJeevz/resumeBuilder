@@ -51,7 +51,7 @@
 			$experienceController = new ExperienceController();
 			$skillController = new SkillController();
 
-			$clientController->addClient($clientID, $data["client"]["clientName"], $data["client"]["address"], $data["client"]["email"], $data["client"]["phone"]);
+			$clientController->addClient($clientID, $data["client"]["clientName"], $data["client"]["email"], $data["client"]["phone"]);
 
 			$educationController->removeAllEducation($clientID);
 			foreach($data["education"] as $educations) {
