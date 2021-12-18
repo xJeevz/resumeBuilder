@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Dec 13, 2021 at 02:58 AM
+-- Generation Time: Dec 18, 2021 at 08:24 PM
 -- Server version: 10.4.22-MariaDB
 -- PHP Version: 8.0.13
 
@@ -36,7 +36,6 @@ CREATE TABLE `client` (
   `licenseKey` varchar(64) NOT NULL,
   `licenseStartDate` date NOT NULL,
   `licenseEndDate` date NOT NULL,
-  `address` text NOT NULL,
   `email` varchar(128) NOT NULL,
   `phone` varchar(20) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
@@ -45,8 +44,8 @@ CREATE TABLE `client` (
 -- Dumping data for table `client`
 --
 
-INSERT INTO `client` (`clientID`, `clientName`, `licenseKey`, `licenseStartDate`, `licenseEndDate`, `address`, `email`, `phone`) VALUES
-(6, 'Test Testing', '5289-7839', '2021-12-13', '2022-02-13', '123 Test St. Qc, 123123, CA', 'test@test.com', '15149999999');
+INSERT INTO `client` (`clientID`, `clientName`, `licenseKey`, `licenseStartDate`, `licenseEndDate`, `email`, `phone`) VALUES
+(12, 'Test T', '2604-6816', '2021-12-18', '2022-02-18', '', 'tt@gmail.com');
 
 -- --------------------------------------------------------
 
@@ -64,6 +63,13 @@ CREATE TABLE `education` (
   `endYear` varchar(8) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
+--
+-- Dumping data for table `education`
+--
+
+INSERT INTO `education` (`educationID`, `clientID`, `schoolName`, `major`, `startYear`, `endYear`) VALUES
+(457, 12, 'hi', 'hi', 'hih', 'i');
+
 -- --------------------------------------------------------
 
 --
@@ -78,6 +84,13 @@ CREATE TABLE `experience` (
   `description` text NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
+--
+-- Dumping data for table `experience`
+--
+
+INSERT INTO `experience` (`experienceID`, `clientID`, `companyName`, `description`) VALUES
+(235, 12, 'hih', 'ihih');
+
 -- --------------------------------------------------------
 
 --
@@ -91,6 +104,13 @@ CREATE TABLE `skill` (
   `skillName` varchar(64) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
+--
+-- Dumping data for table `skill`
+--
+
+INSERT INTO `skill` (`skillID`, `clientID`, `skillName`) VALUES
+(658, 12, 'Lol');
+
 -- --------------------------------------------------------
 
 --
@@ -102,6 +122,13 @@ CREATE TABLE `token` (
   `clientID` int(11) NOT NULL,
   `token` varchar(1024) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `token`
+--
+
+INSERT INTO `token` (`clientID`, `token`) VALUES
+(12, 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpYXQiOjE2Mzk4NTM5NjksInVpZCI6IjEyIiwiZXhwIjoxNjM5OTQwMzY5LCJpc3MiOiJsb2NhbGhvc3QifQ==.9SwdYPfHE+eEp/NjHqKD/p+1tBddOwhqzcqXlUvUK+I=');
 
 --
 -- Indexes for dumped tables
@@ -148,25 +175,25 @@ ALTER TABLE `token`
 -- AUTO_INCREMENT for table `client`
 --
 ALTER TABLE `client`
-  MODIFY `clientID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `clientID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
 
 --
 -- AUTO_INCREMENT for table `education`
 --
 ALTER TABLE `education`
-  MODIFY `educationID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=343;
+  MODIFY `educationID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=458;
 
 --
 -- AUTO_INCREMENT for table `experience`
 --
 ALTER TABLE `experience`
-  MODIFY `experienceID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=170;
+  MODIFY `experienceID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=236;
 
 --
 -- AUTO_INCREMENT for table `skill`
 --
 ALTER TABLE `skill`
-  MODIFY `skillID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=488;
+  MODIFY `skillID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=659;
 
 --
 -- Constraints for dumped tables
